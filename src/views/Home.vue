@@ -1,8 +1,9 @@
 <template>
-  <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
-  </div>
+    <div class="home">
+      <div v-for="room in  this.$store.state.rooms" :key="room.id">
+        {{room }}
+      </div >
+    </div>
 </template>
 
 <script>
@@ -13,6 +14,9 @@ export default {
   name: 'home',
   components: {
     HelloWorld
+  },
+  created : function () {
+    this.$store.dispatch('fetchRooms')
   }
 }
 </script>
