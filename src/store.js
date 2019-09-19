@@ -1,28 +1,32 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
 import db from './api/db';
-const { Room , Player } = db;
+const Player = db;
 
 Vue.use(Vuex)
 
 export default new Vuex.Store({
     state: {
-        rooms : []
+        players : [],
+        playing: false
     },
     mutations: {
-        setRooms( state , rooms ) {
-            state.rooms = rooms;
+        setPlayers( state , players ) {
+            state.players = players;
         }
     },
     actions: {
         fetchRooms( context ) {
-            Room.get().then((querySnapshot) => {
-                const rooms = []
+            Player.get().then((querySnapshot) => {
+                const players = []
                 querySnapshot.forEach((doc) => {
-                    rooms.push( doc.id )
-                    console.log( rooms )
+                    const payload = {
+                        id : doc.id,
+                        ...doc.data()
+                    }
+                    players.push( payload )
                 });
-                context.commit('setRooms' , rooms )
+                context.commit('setPlayers' , players )
             });
         }
     }
