@@ -1,15 +1,15 @@
 <template>
-    <div class="home">
-      <LandingPage> </LandingPage>
+    <div>
+      <Board></Board>
     </div>
 </template>
 
 <script>
-import LandingPage from '../components/LandingPage'
+import Board from '../components/Board'
 export default {
-  name: 'home',
+  name: 'Game',
   components: {
-    LandingPage
+    Board
   },
   created : function () {
     this.$store.dispatch('fetchRooms')

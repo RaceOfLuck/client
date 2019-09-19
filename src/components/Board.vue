@@ -18,6 +18,7 @@
 
 <script>
 export default {
+    name : "Board",
     data : function () {
         return {
             diceCount : 0,
