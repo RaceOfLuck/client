@@ -1,7 +1,7 @@
 <template>
   <div class="lobby">
     <h1>Lobby Room</h1>
-    <button style="width : 100px">START</button>
+    <button style="width : 100px" @click="changePage()">START</button>
     <div class="box-card">
       <div class="card" v-for="(player, index) in players" :key="index">
         <p>{{ player.name }}</p>
@@ -13,15 +13,20 @@
 <script>
 export default {
   data: function() {
-    return {
-      players: [
-        { name: "ghozi" },
-        { name: "Faras" },
-        { name: "Guntoro" },
-        { name: "Ricardo" }
-      ]
-    };
-  }
+	return {
+		players: [
+			{ name: "ghozi" },
+			{ name: "Faras" },
+			{ name: "Guntoro" },
+			{ name: "Ricardo" }
+		]
+	}
+},
+	methods: {
+		changePage() {
+			this.$router.push('/game')	
+		}
+	}
 };
 </script>
 
