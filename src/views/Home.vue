@@ -1,23 +1,24 @@
 <template>
     <div class="home">
-      <div v-for="player in  this.$store.state.players" :key="player.id">
-        {{ player.username }}
-      </div >
-      <Board></Board>
+      <LandingPage> </LandingPage>
     </div>
 </template>
 
 <script>
-// @ is an alias to /src
-import HelloWorld from '@/components/HelloWorld.vue'
-import Board from './Board'
+import LandingPage from '../components/LandingPage'
 export default {
   name: 'home',
   components: {
-    HelloWorld,
-    Board
+    LandingPage
   },
   created : function () {
+    // let audio = new Audio('../assets/sign.mp3');
+    // audio.play()
+    // .then( _ => { 
+
+    //   console.log( "ASDSA")
+    // })
+    // .catch( console.log )
     this.$store.dispatch('fetchRooms')
   }
 }

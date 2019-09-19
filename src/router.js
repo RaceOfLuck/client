@@ -1,9 +1,14 @@
 import Vue from 'vue'
 import Router from 'vue-router'
+import BootstrapVue from 'bootstrap-vue'
+
+// View
 import Home from './views/Home.vue'
 import LandingPage from './views/LandingPage.vue'
 import Lobby from './views/Lobby.vue'
+import Game from './views/Game.vue'
 
+Vue.use(BootstrapVue)
 Vue.use(Router)
 
 export default new Router({
@@ -16,14 +21,6 @@ export default new Router({
       component: Home
     },
     {
-      path: '/about',
-      name: 'about',
-      // route level code-splitting
-      // this generates a separate chunk (about.[hash].js) for this route
-      // which is lazy-loaded when the route is visited.
-      component: () => import(/* webpackChunkName: "about" */ './views/About.vue')
-    }
-    , {
       path: '/landingPage',
       name: 'landingpage',
       component: LandingPage
@@ -32,6 +29,11 @@ export default new Router({
       path: '/lobby',
       name: 'lobby',
       component: Lobby
+    },
+    {
+      path: '/game',
+      name : "game",
+      component : Game
     }
   ]
 })
