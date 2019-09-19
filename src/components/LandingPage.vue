@@ -2,22 +2,37 @@
   <div class="cover">
     <div class="input">
       <form>
-        <input type="text" placeholder="Input Your Name" />
-        <router-link to="/lobby">
-          <input type="submit" value="MASUK" />
-        </router-link>
+        <input type="text" placeholder="Input Your Name" v-model="username"/>
+        <router-link to="/lobby" @click.prevent="newPlayer">Let's Go</router-link>
       </form>
     </div>
   </div>
 </template>
 
 <script>
-export default {};
+export default {
+    data : function () {
+      return {
+         username : ""
+      }
+    },
+    methods : {
+        newPlayer() {
+          // setelah add 
+
+
+          // this.username = ""
+        }
+    }
+};
 </script>
 
 <style scoped>
+*{
+  font-size: 20px;
+}
 .cover {
-  background-color: white;
+  background-color: yellow;
   width: 100vw;
   height: 100vh;
   background-size: cover;
@@ -28,8 +43,8 @@ export default {};
 }
 
 .input {
-  height: 50px;
-  width: 450px;
+  height: 20%;
+  width: 50%;
 }
 
 form {
@@ -37,14 +52,17 @@ form {
   justify-content: space-between;
 }
 input {
-  width: 300px;
-  height: 40px;
+  outline: none;
+  width: 100%;
   background-color: transparent;
-  border: 3px solid black;
+  border: 3px solid orange;
   padding: 5px;
 }
 input[type="submit"] {
   width: 100px;
   height: 40px;
+}
+input:focus {
+  border: 3px solid red;
 }
 </style>
