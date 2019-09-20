@@ -17,20 +17,20 @@ export default new Vuex.Store({
             result: 0
         },
         players: [
-            {
-              username: 'igun',
-              position: 1,
-              trackColor: 'lightBlue',
-              posColor: 'blue',
-              icon: '🧑',
-            }, 
-            {
-              username: 'cado',
-              position: 1,
-              trackColor: 'GreenYellow',
-              posColor: 'Green',
-              icon: '🧜‍♂️'
-            }
+            // {
+            //   username: 'igun',
+            //   position: 1,
+            //   trackColor: 'lightBlue',
+            //   posColor: 'blue',
+            //   icon: '🧑',
+            // }, 
+            // {
+            //   username: 'cado',
+            //   position: 1,
+            //   trackColor: 'GreenYellow',
+            //   posColor: 'Green',
+            //   icon: '🧜‍♂️'
+            // }
         ],
     },
     mutations: {
@@ -42,6 +42,43 @@ export default new Vuex.Store({
         },
         setRoom (state, room) {
             state.room = room
+
+            let colors = [
+                {
+                    trackColor: 'GreenYellow',
+                    posColor: 'Green'
+                },
+                {
+                    trackColor: 'lightBlue',
+                    posColor: 'blue'
+                },
+                {
+                    trackColor: 'LemonChiffon',
+                    posColor: 'LightCoral'
+                },
+                {
+                    trackColor: 'BurlyWood',
+                    posColor: 'Coral'
+                }
+            ]
+
+            let icons = ["😪", "😖", "👩‍🦲", "💂‍♀️"]
+
+            let players = [];
+            state.room.players.forEach(player => {
+                let randomColor = colors[Math.floor(Math.random() * 4)]
+                let randomIcon = icons[Math.floor(Math.random() * 4)]
+                
+                players.push({
+                    position: player.position,
+                    username: player.username,
+                    trackColor: randomColor.trackColor,
+                    posColor: randomColor.posColor,
+                    icon: randomIcon
+                })
+            })
+
+            state.players = players
         },
         setUsername (state, username) {
             state.username = username

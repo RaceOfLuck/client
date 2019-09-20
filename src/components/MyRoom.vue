@@ -5,12 +5,12 @@
       </div>
       <div v-else>
         <h1>GAME ROOM</h1>
-        <pre>{{ this.$store.state.room.isPlaying }}</pre>
+        <!-- <pre>{{ this.$store.state.room.isPlaying }}</pre> -->
         <div>Room Name : {{ this.$store.state.room.name }} : OWNER {{ this.$store.state.room.admin }}</div>
         <div v-for="(player,index) in this.$store.state.room.players" :key="index" >
             <div v-if=" $store.state.username === $store.state.room.admin && player.username === $store.state.username"> Room Admin </div>
             <div>Player Username - {{ index }} : {{ player.username }}</div>
-            <div>Player Position : {{ player.position }}</div>
+            <div>Player Position : {{ player.position }}</div><div v-if="player.position > 10">WIN!</div>
             <div v-if=" $store.state.username === $store.state.room.admin && player.username === $store.state.username"> <button @click="startGame()">start Game</button></div>
             <br><br>
         </div>

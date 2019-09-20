@@ -1,18 +1,26 @@
 <template>
     <div>
-        <div>Roll Count left : {{ diceCount }}</div>
-        <div>Roll Result : {{ result }}</div>
-            <br><br>
-        <form>
-            <div>
-                <div id = "one">
-                    <img src='https://66.media.tumblr.com/4487da1524b8d90e0007c5da72fc49e7/tumblr_puhatt8Lzf1s8erfco3_100.png'>
+        <div v-if="this.$store.state.room.isPlaying">
+            <div>Roll Count left : {{ diceCount }}</div>
+            <div>Roll Result : {{ result }}</div>
+                <br><br>
+            <form>
+                <div>
+                    <div id = "one">
+                        <img src='https://66.media.tumblr.com/4487da1524b8d90e0007c5da72fc49e7/tumblr_puhatt8Lzf1s8erfco3_100.png'>
+                    </div>
                 </div>
-            </div>
-            <!-- <div id = "two"><img src='https://66.media.tumblr.com/fd6e3e52de325f1f2023e320a1ff8191/tumblr_puhatt8Lzf1s8erfco4_100.png'></div></div> -->
-            <input type="number" min="0" v-model="numberOfRolls">
-            <button @click.prevent="roll()">Roll</button>
-        </form>
+                <!-- <div id = "two"><img src='https://66.media.tumblr.com/fd6e3e52de325f1f2023e320a1ff8191/tumblr_puhatt8Lzf1s8erfco4_100.png'></div></div> -->
+                <!-- <input type="number" min="0" v-model="numberOfRolls"> -->
+                <button @click.prevent="roll()">Roll</button>
+            </form>
+        </div>
+
+        <div v-else>
+            <h1>
+               {{ playerWin }} 
+            </h1>
+        </div>
     </div>
 </template>
 
@@ -24,14 +32,15 @@ export default {
             diceCount : 0,
             numberOfRolls : 0,
             result : 0,
-            myVar : null
+            myVar : null,
         }
     },
     methods: {
+        
         roll() {
             console.log('rolling')
-            const numberOfRolls = this.numberOfRolls
-            this.rollDice( numberOfRolls )
+            // const numberOfRolls = this.numberOfRolls
+            this.rollDice( 3 )
         },
         rollDice(numberOfRolls) {      
             this.$store.state.dice.isRoll = true;
@@ -57,6 +66,7 @@ export default {
             if (numberOfRolls < 0) {
                 setTimeout(() => {
                     this.$store.state.dice.isRoll = false;
+                    // this.$store.state.room.players[0].position += this.result
                     this.$store.state.dice.result = this.result;
                     this.numberOfRolls = 0;
                 }, 1000);
@@ -66,8 +76,8 @@ export default {
             setTimeout(() => {
                 this.rollDice(numberOfRolls);
             }, 1000);
-        }
-    }
+        },
+    },
 }
 </script>
 
