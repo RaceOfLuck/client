@@ -10,7 +10,28 @@ export default new Vuex.Store({
         roomId: '',
         room: null,
         rooms: [],
-        isAdmin : false
+        isAdmin : false,
+
+        dice: {
+            isRoll: false,
+            result: 0
+        },
+        players: [
+            {
+              username: 'igun',
+              position: 1,
+              trackColor: 'lightBlue',
+              posColor: 'blue',
+              icon: '🧑',
+            }, 
+            {
+              username: 'cado',
+              position: 1,
+              trackColor: 'GreenYellow',
+              posColor: 'Green',
+              icon: '🧜‍♂️'
+            }
+        ],
     },
     mutations: {
         setRooms (state, rooms) {
