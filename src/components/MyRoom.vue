@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div v-if="$store.state.room.isPlaying === 'true'">
+    <div v-if="$store.state.room.isPlaying === true">
       <Game></Game>
     </div>
     <div v-else>
@@ -14,23 +14,22 @@
             <div>Player Position : {{ player.position }}</div><div v-if="player.position > 10">WIN!</div>
             <div v-if=" $store.state.username === $store.state.room.admin && player.username === $store.state.username"> <button @click="startGame()">start Game</button></div>
         <br><br>-->
-        <div v-if="player.position > 10">
-          <button @click.prevent="out">GO OUT</button>
-        </div>
+        
         <div>
           Room Name : {{ this.$store.state.room.name }}
           <br />
           OWNER {{ this.$store.state.room.admin }}
         </div>
-        <button @click="startGame()">start Game</button>
         <div class="card" v-for="(player,index) in this.$store.state.room.players" :key="index">
-          <div
-            v-if=" $store.state.username === $store.state.room.admin && player.username === $store.state.username"
-          >Room Admin</div>
+            <div v-if="player.position > 10">
+          <button @click.prevent="out">GO OUT</button>
+        </div>
+         <div v-if=" $store.state.username === $store.state.room.admin && player.username === $store.state.username">Room Admin</div>
           <div>Player Username {{ player.username }}</div>
           <div
-            v-if=" $store.state.username === $store.state.room.admin && player.username === $store.state.username"
-          ></div>
+            v-if=" $store.state.username === $store.state.room.admin && player.username === $store.state.username">
+        <button @click="startGame()">start Game</button>
+            </div>
         </div>
       </div>
     </div>
@@ -58,10 +57,14 @@ export default {
           console.log("PLAYING");
           this.$router.push("/game");
         })
-        .catch(conosle.log);
+        .catch(console.log);
     },
     roomOut() {
       this.$router.push("./room");
+    },
+    out () {
+        localStorage.clear()
+        this.$router.push('/');
     }
   }
 };
