@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="game">
       <Board></Board>
       <!-- <pre> {{ players }} </pre> -->
 
@@ -69,6 +69,10 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
+  .game {
+    background: #ffe000;
+    height: 100vh;
 
+  }
 </style>
