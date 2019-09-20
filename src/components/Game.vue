@@ -58,6 +58,14 @@ export default {
       // })
     }
   },
+  created () {
+    let audio = new Audio( require('../assets/song.mp3') );
+    audio.play()
+    .then( _ => {
+      console.log('Play song')
+    })
+    .catch( console.log )
+  }
 }
 </script>
 
