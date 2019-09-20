@@ -41,7 +41,7 @@ export default {
             .set(myroom)
             .then(_ => { console.log( " UPDATed")})
             .catch ( console.log )
-          if ( player.position >= 10) {
+          if ( player.position >= 29) {
             
             // this.$swal(`${player.username} is win!!!`);
             let myroom = this.$store.state.room
