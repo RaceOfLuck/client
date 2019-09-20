@@ -8,20 +8,20 @@ Vue.use(Vuex)
 export default new Vuex.Store({
     state: {
         players: [
-            // {
-            //   username: 'igun',
-            //   position: 1,
-            //   trackColor: 'lightBlue',
-            //   posColor: 'blue',
-            //   icon: '🧑',
-            // }, 
-            // {
-            //   username: 'cado',
-            //   position: 1,
-            //   trackColor: 'GreenYellow',
-            //   posColor: 'Green',
-            //   icon: '🧜‍♂️'
-            // }
+            {
+              username: 'igun',
+              position: 1,
+              trackColor: 'lightBlue',
+              posColor: 'blue',
+              icon: '🧑',
+            }, 
+            {
+              username: 'cado',
+              position: 1,
+              trackColor: 'GreenYellow',
+              posColor: 'Green',
+              icon: '🧜‍♂️'
+            }
         ],
         playing: false,
         dice: {
