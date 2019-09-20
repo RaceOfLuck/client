@@ -13,6 +13,9 @@
             <div>Player Position : {{ player.position }}</div><div v-if="player.position > 10">WIN!</div>
             <div v-if=" $store.state.username === $store.state.room.admin && player.username === $store.state.username"> <button @click="startGame()">start Game</button></div>
             <br><br>
+            <div v-if="player.position > 10">
+                <button @click.prevent="out">GO OUT</button>
+            </div>
         </div>
       </div>
       
@@ -42,6 +45,10 @@ export default {
                 this.$router.push('/game')
             })
             .catch( conosle.log )
+        },
+        out() {
+            localStorage.clear();
+            this.$router.push('/');
         }
     },
 }
