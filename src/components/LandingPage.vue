@@ -1,9 +1,10 @@
 <template>
   <div class="cover">
+    <h3>Race Of Luck</h3>
     <div class="input">
       <form>
-        <input type="text" placeholder="Input Your Name" v-model="username"/>
-        <router-link to="/lobby" @click.prevent="newPlayer">Let's Go</router-link>
+        <input type="text" placeholder="Input Your Name" v-model="username" />
+        <router-link to="/room" @click.prevent="newPlayer" style="color:black">Let's Go</router-link>
       </form>
     </div>
   </div>
@@ -11,28 +12,26 @@
 
 <script>
 export default {
-    data : function () {
-      return {
-         username : ""
-      }
-    },
-    methods : {
-        newPlayer() {
-          // setelah add 
-
-
-          // this.username = ""
-        }
+  data: function() {
+    return {
+      username: ""
+    };
+  },
+  methods: {
+    newPlayer() {
+      // setelah add
+      // this.username = ""
     }
+  }
 };
 </script>
 
 <style scoped>
-*{
+* {
   font-size: 20px;
 }
 .cover {
-  background-color: yellow;
+  background: #ffe000;
   width: 100vw;
   height: 100vh;
   background-size: cover;
@@ -40,6 +39,12 @@ export default {
   display: flex;
   justify-content: center;
   align-items: center;
+  flex-direction: column;
+}
+
+h3 {
+  font-size: 50px;
+  font-family: "Courgette", cursive;
 }
 
 .input {
@@ -51,13 +56,15 @@ form {
   display: flex;
   justify-content: space-between;
 }
+
 input {
   outline: none;
   width: 100%;
   background-color: transparent;
-  border: 3px solid orange;
+  border: 3px solid black;
   padding: 5px;
 }
+
 input[type="submit"] {
   width: 100px;
   height: 40px;

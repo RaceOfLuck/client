@@ -7,6 +7,7 @@ import Home from './views/Home.vue'
 import LandingPage from './views/LandingPage.vue'
 import Lobby from './views/Lobby.vue'
 import Game from './views/Game.vue'
+import Room from './views/Room.vue'
 
 Vue.use(BootstrapVue)
 Vue.use(Router)
@@ -32,8 +33,13 @@ export default new Router({
     },
     {
       path: '/game',
-      name : "game",
-      component : Game
+      name: "game",
+      component: Game
+    },
+    {
+      path: '/room',
+      name: 'room',
+      component: Room
     }
   ]
 })
