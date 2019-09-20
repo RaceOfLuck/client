@@ -10,27 +10,27 @@ export default new Vuex.Store({
         roomId: '',
         room: null,
         rooms: [],
-        isAdmin : false
+        isAdmin: false
     },
     mutations: {
-        setRooms (state, rooms) {
+        setRooms(state, rooms) {
             state.rooms = rooms
         },
-        setRoomId (state, roomId) {
+        setRoomId(state, roomId) {
             state.roomId = roomId
         },
-        setRoom (state, room) {
+        setRoom(state, room) {
             state.room = room
         },
-        setUsername (state, username) {
+        setUsername(state, username) {
             state.username = username
         },
-        setAdmin( state , stat ){
+        setAdmin(state, stat) {
             state.isAdmin = stat
         }
     },
     actions: {
-        fetchAllRoom (context) {
+        fetchAllRoom(context) {
             room.onSnapshot(querySnapshot => {
                 const rooms = []
                 querySnapshot.forEach(doc => {
@@ -43,18 +43,18 @@ export default new Vuex.Store({
                 context.commit('setRooms', rooms)
             })
         },
-        createRoom (context, payload) {
+        createRoom(context, payload) {
             room.orderBy('created').add({
                 name: payload.roomName,
                 players: [],
                 playing: true
             })
-            .then(function (docRef) {
-                context.commit('setRoomId', docRef.id)
-            })
-            .catch(console.log)
+                .then(function (docRef) {
+                    context.commit('setRoomId', docRef.id)
+                })
+                .catch(console.log)
         },
-        joinRoom (context, roomId) {
+        joinRoom(context, roomId) {
             const player = {
                 username: localStorage.getItem('username'),
                 position: 0
@@ -62,22 +62,22 @@ export default new Vuex.Store({
             room.doc(roomId).update({
                 players: firebase.firestore.FieldValue.arrayUnion(player)
             })
-            .then(() => {
-                console.log('Join Success')
-                context.dispatch('fetchRoom', roomId)
-            })
-            .catch(console.log)
-        },
-        fetchRoom ( context , roomId ) {
-            if ( roomId ) {
-                room.doc( roomId )
-                .onSnapshot(doc => {
-                    context.commit('setRoom',{ id : doc.id , ...doc.data()})
+                .then(() => {
+                    console.log('Join Success')
+                    context.dispatch('fetchRoom', roomId)
                 })
+                .catch(console.log)
+        },
+        fetchRoom(context, roomId) {
+            if (roomId) {
+                room.doc(roomId)
+                    .onSnapshot(doc => {
+                        context.commit('setRoom', { id: doc.id, ...doc.data() })
+                    })
             }
         }
     },
-    created : function () {
+    created: function () {
         this.fetchAllRoom();
     }
 })

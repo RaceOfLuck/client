@@ -1,15 +1,13 @@
 <template>
-  <div class="home">
-    <UsernameForm></UsernameForm>
-  </div>
+  <UsernameForm></UsernameForm>
 </template>
 
 <script>
-import UsernameForm from '../components/UsernameForm'
+import UsernameForm from "../components/UsernameForm";
 export default {
-  name: 'home',
+  name: "home",
   components: {
     UsernameForm
   }
-}
+};
 </script>
