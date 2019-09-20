@@ -1,33 +1,26 @@
 <template>
   <div id="app">
-    <div class="container">
-      <router-view/>
-    </div>
+    <!-- <div class="container"> -->
+    <router-view />
+    <!-- </div> -->
   </div>
 </template>
 
 <script>
 export default {
-  created () {
-    this.$store.dispatch('fetchAllRoom')
-    if ( !localStorage.getItem('username') ) {
-        this.$router.push('/').catch(_ => {})
+  created() {
+    this.$store.dispatch("fetchAllRoom");
+    if (!localStorage.getItem("username")) {
+      this.$router.push("/").catch(_ => {});
     } else {
-        this.$router.push('/createRoom').catch(_ => {})
-        this.$store.commit('setUsername' , localStorage.getItem('username'))
+      this.$router.push("/createRoom").catch(_ => {});
+      this.$store.commit("setUsername", localStorage.getItem("username"));
     }
   }
-}
+};
 </script>
 
 <style>
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-}
 #nav {
   padding: 30px;
 }
