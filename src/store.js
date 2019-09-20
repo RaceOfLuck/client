@@ -7,8 +7,27 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
     state: {
-        players : [],
-        playing: false
+        players: [
+            // {
+            //   username: 'igun',
+            //   position: 1,
+            //   trackColor: 'lightBlue',
+            //   posColor: 'blue',
+            //   icon: '🧑',
+            // }, 
+            // {
+            //   username: 'cado',
+            //   position: 1,
+            //   trackColor: 'GreenYellow',
+            //   posColor: 'Green',
+            //   icon: '🧜‍♂️'
+            // }
+        ],
+        playing: false,
+        dice: {
+            isRoll: false,
+            result: 0
+        }
     },
     mutations: {
         setPlayers( state , players ) {

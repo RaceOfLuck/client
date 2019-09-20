@@ -1,12 +1,13 @@
 <template>
-  <div class="card m-1" style="border: 1px solid black; width: 2em; height: 30px">
-
+  <div class="card m-1" :style="{width: '2em', height: '30px', backgroundColor: posColor}">
+    <slot></slot>
   </div>
 </template>
 
 <script>
-export default {
 
+export default {
+  props: ['posColor', 'icon']
 }
 </script>
 

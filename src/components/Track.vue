@@ -1,45 +1,27 @@
 <template>
-  <div class="card d-flex flex-row align-items-center" style="width: 100%; height: 40px;">
-     <Pos></Pos>
-     <Pos></Pos>
-     <Pos></Pos>
-     <Pos></Pos>
-     <Pos></Pos>
+  <div class="card d-flex flex-row justify-content-start align-items-center mt-2 mb-2" :style="{width: '100%', height: '40px', backgroundColor: player.trackColor}">
+    <Pos v-for="n in 30" :key="n" :posColor="player.posColor">
+        <span v-if="n == player.position">{{ player.icon }}</span>
+    </Pos>
   </div>
 </template>
 
 <script>
 import Pos from './Pos'
 export default {
+    props: ['player'],
     components: { Pos },
     data() {
         return {
-            maxPosition: 30,
-            position: 1,
-            dice: 1
+            
         }
     }, 
     methods: {
-        advanced() {
-            this.position += this.dice
-        },
-        backOff(){
-            this.position -= this.dice
-        }
+       
     }
 }
 </script>
 
-<style>
-    /* .container {
-        box-sizing: border-box;
-    }
-    .row {
-        display: flex;
-    }
-    .column {
-        width: 50px;
-        border: 1px solid black;
-        height: 40px;
-    } */
+<style scoped>
+   
 </style>

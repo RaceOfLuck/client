@@ -4,7 +4,7 @@
     <button style="width : 100px" @click="changePage()">START</button>
     <div class="box-card">
       <div class="card" v-for="(player, index) in players" :key="index">
-        <p>{{ player.name }}</p>
+        <p class="">{{ player.name }}</p>
       </div>
     </div>
   </div>
@@ -30,7 +30,7 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
 .lobby {
   display: flex;
   flex-direction: column;
