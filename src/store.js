@@ -10,7 +10,28 @@ export default new Vuex.Store({
         roomId: '',
         room: null,
         rooms: [],
-        isAdmin : false
+        isAdmin : false,
+
+        dice: {
+            isRoll: false,
+            result: 0
+        },
+        players: [
+            // {
+            //   username: 'igun',
+            //   position: 1,
+            //   trackColor: 'lightBlue',
+            //   posColor: 'blue',
+            //   icon: '🧑',
+            // }, 
+            // {
+            //   username: 'cado',
+            //   position: 1,
+            //   trackColor: 'GreenYellow',
+            //   posColor: 'Green',
+            //   icon: '🧜‍♂️'
+            // }
+        ],
     },
     mutations: {
         setRooms (state, rooms) {
@@ -21,6 +42,43 @@ export default new Vuex.Store({
         },
         setRoom (state, room) {
             state.room = room
+
+            let colors = [
+                {
+                    trackColor: 'GreenYellow',
+                    posColor: 'Green'
+                },
+                {
+                    trackColor: 'lightBlue',
+                    posColor: 'blue'
+                },
+                {
+                    trackColor: 'LemonChiffon',
+                    posColor: 'LightCoral'
+                },
+                {
+                    trackColor: 'BurlyWood',
+                    posColor: 'Coral'
+                }
+            ]
+
+            let icons = ["😪", "😖", "👩‍🦲", "💂‍♀️"]
+
+            let players = [];
+            state.room.players.forEach(player => {
+                let randomColor = colors[Math.floor(Math.random() * 4)]
+                let randomIcon = icons[Math.floor(Math.random() * 4)]
+                
+                players.push({
+                    position: player.position,
+                    username: player.username,
+                    trackColor: randomColor.trackColor,
+                    posColor: randomColor.posColor,
+                    icon: randomIcon
+                })
+            })
+
+            state.players = players
         },
         setUsername (state, username) {
             state.username = username

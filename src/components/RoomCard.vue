@@ -1,6 +1,7 @@
 <template>
     <div class="card mt-3">
         <div>Room Name : {{ room.name }} </div>
+        <!-- <pre>{{ room }} </pre> -->
         <button @click.prevent="joinRoom(`${ room.id }`)">Join room</button>
     </div>
 </template>
